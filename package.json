@@ -1,0 +1,23 @@
+{
+  "name": "javan-rhino",
+  "version": "1.0.0",
+  "description": "Front-end to Ubuntu Store Payments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canonical-ols/javan-rhino.git"
+  },
+  "contributors": [
+    "Bartek Szopka <bartek.szopka@canonical.com>",
+    "Katie Fenn <katie.fenn@canonical.com>",
+    "Stephen Stewart <stephen.stewart@canonical.com>"
+  ],
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/canonical-ols/javan-rhino/issues"
+  },
+  "homepage": "https://github.com/canonical-ols/javan-rhino#readme"
+}
