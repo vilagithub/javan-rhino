@@ -8,7 +8,7 @@ module.exports = {
     './src',
   ],
   output: {
-    path: path.join(__dirname, 'public/static'),
+    path: path.join(__dirname, '../public/static'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
@@ -21,7 +21,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel'],
+        loaders: ['react-hot', 'babel'],
       }
     ]
   }

@@ -1,13 +1,11 @@
 import Express from 'express';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import compression from 'compression';
-import favicon from 'serve-favicon';
 import util from 'util';
+import path from 'path';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import { match } from 'react-router';
 import { renderToString } from 'react-dom/server';
 
 import Html from '../src/helpers/Html';
@@ -27,9 +25,7 @@ if (!(process.env.NODE_ENV === 'production')) {
 
 }
 
-app.use(compression());
 app.use(Express.static('public'));
-pp.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 app.get('/', function (req, res) {
   res.send('<!doctype html>\n' +
