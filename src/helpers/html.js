@@ -20,6 +20,7 @@ export default class Html extends Component {
         <body>
           <div id="content" dangerouslySetInnerHTML={{__html: content}}/>
           <script src="/static/bundle.js" />
+          <link rel="stylesheet" href="/static/style.css" />
         </body>
       </html>
     );
