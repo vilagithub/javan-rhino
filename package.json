@@ -7,8 +7,9 @@
   "scripts": {
     "start": "node server/",
     "lint": "eslint -c .eslintrc.js '**/*.js'",
-    "test": "npm run lint && mocha --compilers js:babel-register --recursive",
-    "test:watch": "npm test -- --watch"
+    "test": "npm run lint && nyc --require babel-core/register mocha --compilers js:babel-register --recursive",
+    "test:watch": "npm test -- --watch",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.11.6",
+    "coveralls": "^2.11.12",
     "css-loader": "^0.23.1",
     "eslint": "^3.3.0",
     "eslint-plugin-react": "^6.1.0",
@@ -39,6 +41,7 @@
     "express": "^4.14.0",
     "mocha": "^3.0.2",
     "normalize.css": "^4.2.0",
+    "nyc": "^8.1.0",
     "react": "^15.3.0",
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
