@@ -2,12 +2,9 @@ import Express from 'express';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import util from 'util';
-import path from 'path';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import { renderToString } from 'react-dom/server';
-
 import Html from '../src/helpers/Html';
 import webpackConfig from '../webpack/dev-config';
 

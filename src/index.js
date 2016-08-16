@@ -6,4 +6,4 @@ import App from './containers/app.js';
 render(
   <App />,
   document.getElementById('content')
-)
+);
