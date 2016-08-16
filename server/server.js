@@ -11,17 +11,13 @@ import webpackConfig from '../webpack/dev-config';
 const app = Express();
 const compiler = webpack(webpackConfig);
 
-if (!(process.env.NODE_ENV === 'production')) {
+app.use(webpackDevMiddleware(compiler, {
+  hot: true,
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath })
+);
 
-  app.use(webpackDevMiddleware(compiler, {
-    hot: true,
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath })
-  );
-  app.use(webpackHotMiddleware(compiler));
-
-}
-
+app.use(webpackHotMiddleware(compiler));
 app.use(Express.static('public'));
 
 app.get('/', function (req, res) {
