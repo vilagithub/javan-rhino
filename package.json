@@ -4,6 +4,7 @@
   "description": "Front-end to Ubuntu Store Payments",
   "main": "index.js",
   "scripts": {
+    "start": "node server/",
     "lint": "eslint -c .eslintrc.js *.js",
     "test": "npm run lint && mocha --compilers js:babel-register --recursive",
     "test:watch": "npm test -- --watch"
