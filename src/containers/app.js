@@ -8,21 +8,21 @@ export default class App extends Component {
     return (
       <div>
         <Helmet
-          htmlAttributes={{'lang': 'en'}}
+          htmlAttributes={{ 'lang': 'en' }}
           title='buy [snap-name]'
           titleTemplate='my.ubuntu.com - %s'
           meta={[
-            {'name': 'description', 'content': 'my.ubuntu.com payments ui'},
+            { 'name': 'description', 'content': 'my.ubuntu.com payments ui' },
           ]}
           link={[
-            {'rel': 'stylesheet', 'href': '/static/style.css'}
+            { 'rel': 'stylesheet', 'href': '/static/style.css' }
           ]}
         />
         <div>
-          <NavLink to="/" onlyActiveOnIndex={true}>Home</NavLink>
+          <NavLink to="/" onlyActiveOnIndex={ true }>Home</NavLink>
           <NavLink to="/about">About</NavLink>
         </div>
-        {this.props.children}
+        { this.props.children }
       </div>
     );
   }
