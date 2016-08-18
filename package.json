@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/canonical-ols/javan-rhino#readme",
   "dependencies": {
+    "autoprefixer": "^6.4.0",
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.13.0",
@@ -40,9 +41,12 @@
     "eslint-plugin-react": "^6.1.0",
     "expect": "^1.20.2",
     "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "mocha": "^3.0.2",
     "normalize.css": "^4.2.0",
     "nyc": "^8.1.0",
+    "postcss-loader": "^0.10.0",
+    "postcss-simple-vars": "^3.0.0",
     "react": "^15.3.0",
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
@@ -53,8 +57,5 @@
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
-  },
-  "devDependencies": {
-    "extract-text-webpack-plugin": "^1.0.1"
   }
 }
