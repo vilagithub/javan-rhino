@@ -8,3 +8,7 @@ If you have nvm istalled (https://github.com/creationix/nvm) simple do
 `nvm use`
 in project root and you'll be switched to the correct version of node
 for this project.
+
+# Why javan-rhino?
+
+Win a prize if you figure it out!
