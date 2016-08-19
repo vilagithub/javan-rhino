@@ -21,6 +21,8 @@ export default class Html extends Component {
         <body>
           <div id="content" dangerouslySetInnerHTML={{ __html: content }}/>
           <script src="/static/bundle.js" />
+
+          <script src="https://js.stripe.com/v2/"></script>
         </body>
       </html>
     );
