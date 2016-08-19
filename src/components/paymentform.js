@@ -67,8 +67,26 @@ export default React.createClass({
             <code>snap buy &lt;snap-name&gt;</code>
           </span>
         });
+
+        this.post('/api/stripe/customers', `stripeToken=${response.id}&clientId=tester@example.com`, (responseText) => {
+          window.console.log('/API', responseText);
+        });
       }
     });
+  },
+
+  post(url, params, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = () => {//Call a function when the state changes.
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        callback(xhr.responseText);
+      }
+    };
+    xhr.send(params);
   },
 
   render() {
