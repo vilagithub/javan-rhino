@@ -11,7 +11,7 @@ import routes from '../src/routes';
 import Html from '../src/helpers/Html';
 import webpackConfig from '../webpack/dev-config';
 
-import customers from './api/stripe/customers';
+import stripe from './api/stripe';
 
 const app = Express();
 const compiler = webpack(webpackConfig);
@@ -28,9 +28,14 @@ app.use(Express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// SIMPLE API PROTOTYPE
+// ----------------------
+
+// TODO: proper routing?
+// TODO: check for POST
+
 app.use('/api/stripe/customers', function(req, res) {
-  // TODO: check for POST?
-  customers.create(req.body, (error, customer) => {
+  stripe.create_customer(req.body, (error, customer) => {
     if (!error) {
       res.status(200);
       res.json(customer);
@@ -41,6 +46,21 @@ app.use('/api/stripe/customers', function(req, res) {
     }
   });
 });
+
+app.use('/api/stripe/charges', function(req, res) {
+  stripe.create_charge(req.body, (error, customer) => {
+    if (!error) {
+      res.status(200);
+      res.json(customer);
+    }
+    else {
+      res.status(500);
+      res.json(error);
+    }
+  });
+});
+
+// ---
 
 app.use('/', function (req, res) {
 
