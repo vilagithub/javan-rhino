@@ -168,7 +168,7 @@ export default React.createClass({
       );
     }
 
-    if (this.state.sourceToken) {
+    if (this.state.message) {
       content.push(
         <div key="form-message" style={ this.state.isError ? style.error : style.success }>
           {this.state.message}
