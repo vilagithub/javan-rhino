@@ -1,24 +1,31 @@
 const path = require('path');
 const webpack = require('webpack');
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const variables = require('postcss-simple-vars');
 const autoprefixer = require('autoprefixer');
 
+const webpackIsomorphicToolsPlugin =
+  new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools-configuration'))
+  .development();
+
 module.exports = {
+  context: path.resolve(__dirname, '..'),
   entry: [
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
     'webpack/hot/only-dev-server',
     './src',
   ],
   output: {
     path: path.join(__dirname, '../public/static'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: 'http://localhost:3001/static/'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('style.css', { allChunks: true })
+    new ExtractTextPlugin('style.css', { allChunks: true }),
+    webpackIsomorphicToolsPlugin
   ],
   module: {
     loaders: [
@@ -37,9 +44,11 @@ module.exports = {
           [
             loader(
               'css-loader',
-              'modules',
-              'importLoaders=1',
-              'localIdentName=[name]__[local]___[hash:base64:5]'
+              [
+                'modules',
+                'importLoaders=1',
+                'localIdentName=[name]__[local]___[hash:base64:5]'
+              ]
             ),
             'postcss-loader'
           ].join('!')
@@ -52,7 +61,7 @@ module.exports = {
   }
 };
 
-function loader(name, ...options) {
+function loader(name, options) {
   if (options.length > 0) {
     return name + '?' + options.join('&');
   }

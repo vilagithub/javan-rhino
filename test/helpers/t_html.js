@@ -14,9 +14,17 @@ import Html from '../../src/helpers/html.js';
 //
 // [1] https://github.com/nfl/react-helmet/issues/158
 describe('<Html /> helper', () => {
+  const assets = {
+    styles: {
+      main: 'example.css'
+    },
+    javascript: {
+      main: 'example.js'
+    }
+  };
 
   it('should be an html block', () => {
-    const html = shallow(<Html />);
+    const html = shallow(<Html assets={ assets } />);
 
     expect(html.type()).toEqual('html');
   });
@@ -24,15 +32,15 @@ describe('<Html /> helper', () => {
   it('should render content given as prop', () => {
     const content = <span>test</span>;
     // because of dangerouslySetInnerHTML we need to do static render instead of shallow
-    const html = render(<Html component={ content } />);
+    const html = render(<Html component={ content } assets={ assets } />);
 
     expect(html.find('#content').children('span').length).toEqual(1);
     expect(html.find('#content').text()).toEqual('test');
   });
 
   it('should render stylesheet links in head', () => {
-    const helmet = <Helmet link={[{ 'rel': 'stylesheet', 'href': '/static/style.css' }]} />;
-    const html = shallow(<Html component={ helmet }/>);
+    const content = <span>test</span>;
+    const html = shallow(<Html component={ content } assets={ assets } />);
 
     expect(html.find('body link[rel="stylesheet"]').length).toEqual(0);
     expect(html.find('head link[rel="stylesheet"]').length).toEqual(1);
@@ -40,7 +48,7 @@ describe('<Html /> helper', () => {
 
   it('should render title from Helmet', () => {
     const helmet = <Helmet title='test title' />;
-    const html = shallow(<Html component={ helmet }/>);
+    const html = shallow(<Html component={ helmet } assets={ assets } />);
 
     expect(html.find('title').text()).toEqual('test title');
   });

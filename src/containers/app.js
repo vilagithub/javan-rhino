@@ -14,9 +14,6 @@ export default class App extends Component {
           meta={[
             { 'name': 'description', 'content': 'my.ubuntu.com payments ui' },
           ]}
-          link={[
-            { 'rel': 'stylesheet', 'href': '/static/style.css' }
-          ]}
         />
         <div>
           <NavLink to="/" onlyActiveOnIndex={ true }>Home</NavLink>
