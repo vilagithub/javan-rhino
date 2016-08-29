@@ -8,7 +8,7 @@
     "start": "concurrently --kill-others \"npm run watch-client\" \"node server/\"",
     "watch-client": "node webpack/webpack-dev-server.js",
     "lint": "eslint -c .eslintrc.js '**/*.js'",
-    "test": "BABEL_DISABLE_CACHE=1 NODE_ENV=TEST nyc --require babel-core/register mocha --compilers js:babel-register --recursive && npm run lint",
+    "test": "npm run test:run && npm run lint",
     "test:run": "BABEL_DISABLE_CACHE=1 NODE_ENV=TEST nyc --require babel-core/register mocha --compilers js:babel-register --recursive",
     "test:watch": "npm run test:run -- --watch",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
