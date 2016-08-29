@@ -2,12 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const variables = require('postcss-simple-vars');
+const vars = require('postcss-simple-vars');
 const autoprefixer = require('autoprefixer');
 
 const webpackIsomorphicToolsPlugin =
   new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools-configuration'))
   .development();
+
+const sharedVars = require('../src/style/variables');
 
 module.exports = {
   context: path.resolve(__dirname, '..'),
@@ -57,7 +59,7 @@ module.exports = {
     ]
   },
   postcss: function () {
-    return [variables, autoprefixer];
+    return [ vars({ variables: () => sharedVars }), autoprefixer ];
   }
 };
 
