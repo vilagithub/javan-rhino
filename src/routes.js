@@ -4,11 +4,13 @@ import App from './containers/app.js';
 import About from './containers/about.js';
 import Home from './containers/home.js';
 import AddCard from './containers/add-card.js';
+import NotFound from './containers/404.js';
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
     <Route path="/about" component={About}/>
     <Route path="/pay/add-card" component={AddCard}/>
+    <Route path="*" component={NotFound} />
   </Route>
 );
