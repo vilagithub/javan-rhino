@@ -22,6 +22,12 @@ $success-color: $success;
   margin-right: 0;
 }
 
+.label {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 4px;
+}
+
 .textInput {
   -webkit-appearance: textfield;
   border-radius: 2px;
@@ -30,7 +36,8 @@ $success-color: $success;
   font-size: 16px;
   margin: 0;
   outline: none;
-  padding: .5em .7em;
+  padding: 8px 11px;
+  height: 42px; /* hardcoded height to make sure all inputs (including selects) have same height */
   vertical-align: baseline;
   font-weight: 300;
 
@@ -50,4 +57,23 @@ $success-color: $success;
 
 .textInput.success {
   border-color: $success-color;
+}
+
+.label.error {
+  color: $error-color;
+}
+
+.label.success {
+  color: $success-color;
+}
+
+.errorMsg {
+  font-size: 14px;
+  margin: 2px 0;
+  color: $error-color;
+  display: none;
+}
+
+.errorMsg.error {
+  display: block;
 }

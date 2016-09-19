@@ -1,37 +1,37 @@
 import React, { PropTypes } from 'react';
-import classNames from 'classnames/bind';
-
-import Label from './label';
 
 import styles from './inputField.css';
-const cx = classNames.bind(styles);
 
 export default function InputField(props) {
   const { name, label, type='text', size='full', placeholder } = props;
   const id = `ID_INPUT_FIELD_${name}`;
+  const status = props.touched ? (props.valid ? 'success' : 'error') : null;
 
-  const className = cx({
-    inputField: true,
-    full: size === 'full',
-    small: size === 'small'
-  });
-
-  const inputClassName = cx({
-    textInput: true,
-    success: props.touched && props.valid,
-    error: props.touched && !props.valid
-  });
-
-  return <div className={ className }>
-    <Label htmlFor={ id }>{ label }:</Label>
-    <input id={ id } name={ name } type={ type }
+  return <div className={ `${styles.inputField} ${styles[size]}` }>
+    <label
+      htmlFor={ id }
+      className={ `${styles.label} ${styles[status]}` }
+    >
+      { label }:
+    </label>
+    <input
+      id={ id }
+      name={ props.sensitive ? null : name }
+      data-name={ name }
+      type={ type }
       required={ props.required }
       placeholder={ placeholder }
-      className={ inputClassName }
+      className={ `${styles.textInput} ${styles[status]}` }
       onChange={ props.onChange }
       onBlur={ props.onBlur }
       value={ props.value || '' }
-      />
+    />
+    <label
+      htmlFor={ id }
+      className={ `${styles.errorMsg} ${styles[status]}` }
+    >
+      { props.errorMsg }
+    </label>
   </div>;
 }
 
@@ -42,9 +42,11 @@ InputField.propTypes = {
   required: PropTypes.bool,
   type: PropTypes.string,
   size: PropTypes.oneOf(['full', 'small']),
+  sensitive: PropTypes.bool,
   valid: PropTypes.bool,
   touched: PropTypes.bool,
   value: PropTypes.string,
+  errorMsg: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func
 };
