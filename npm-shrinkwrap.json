@@ -980,6 +980,9 @@
     "filename-regex": {
       "version": "2.0.0"
     },
+    "fill-keys": {
+      "version": "1.0.2"
+    },
     "fill-range": {
       "version": "2.2.3"
     },
@@ -1654,6 +1657,9 @@
     "is-number-object": {
       "version": "1.0.3"
     },
+    "is-object": {
+      "version": "1.0.1"
+    },
     "is-path-cwd": {
       "version": "1.0.0"
     },
@@ -1931,6 +1937,9 @@
           "version": "7.0.5"
         }
       }
+    },
+    "module-not-found-error": {
+      "version": "1.0.1"
     },
     "moment": {
       "version": "2.15.0"
@@ -2873,6 +2882,9 @@
     "proxy-addr": {
       "version": "1.1.2"
     },
+    "proxyquire": {
+      "version": "1.7.10"
+    },
     "prr": {
       "version": "0.0.0"
     },
@@ -3046,6 +3058,9 @@
           "version": "1.0.1"
         }
       }
+    },
+    "resolve": {
+      "version": "1.1.7"
     },
     "resolve-from": {
       "version": "2.0.0"
