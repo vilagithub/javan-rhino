@@ -20,14 +20,13 @@ export const getMacaroon = (req, res, next) => {
   };
 
   request(options, (error, response, body) => {
-    // TODO handle macaroon failure
-    if (error) {
-      res.send('Get macaroon failed');
+    if (error || !body.macaroon) {
+      res.status(401).send({ error: 'Get macaroon failed' });
+    } else {
+      req.session.macaroon = body.macaroon;
+      req.session.cid = extractCaveatId(body.macaroon);
+      next();
     }
-
-    req.session.macaroon = body.macaroon;
-    req.session.cid = extractCaveatId(body.macaroon);
-    next();
   });
 };
 
