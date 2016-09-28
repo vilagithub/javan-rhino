@@ -21,7 +21,13 @@ export const getMacaroon = (req, res, next) => {
 
   request(options, (error, response, body) => {
     if (error || !body.macaroon) {
-      res.status(401).send({ error: 'Get macaroon failed' });
+      const errors = req.session.errors || [];
+      errors.push({
+        'code': 'request-failed',
+        'message': 'Get macaroon request failed.'
+      });
+      req.session.errors = errors;
+      res.redirect('/');
     } else {
       req.session.macaroon = body.macaroon;
       req.session.cid = extractCaveatId(body.macaroon);

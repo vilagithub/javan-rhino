@@ -32,7 +32,7 @@ describe('login routes', () => {
 
     context('when SCA responds with error', () => {
 
-      it('should return http 401', (done) => {
+      it('should redirect home on error', (done) => {
         const sca = nock(UBUNTU_SCA_URL)
         .post('/dev/api/acl/', {
           'permissions': ['package_access', 'package_purchase']
@@ -41,7 +41,8 @@ describe('login routes', () => {
 
         supertest(app)
           .get('/login/authenticate')
-          .expect(401, (err) => {
+          .expect('location', '/')
+          .expect(302, (err) => {
             sca.done();
             done(err);
           });
