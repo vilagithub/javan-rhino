@@ -60,7 +60,8 @@ function serve(webpackIsomorphicTools) {
             errors: req.session.errors,
             isAuthenticated: req.session.authenticated,
             isDev: isDev,
-            name: req.session.name
+            name: req.session.name,
+            email: req.session.email
           }
         };
         const store = configureStore(initialState);
