@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import conf, { Config } from '../../../../src/common/config';
+import conf, { Config } from '../../../../../src/common/config';
 
 // TODO browser only tests vrs node only tests
 describe('Config', () => {

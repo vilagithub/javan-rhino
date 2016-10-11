@@ -1,7 +1,7 @@
 import expect from 'expect';
 
-import { customer } from '../../../../src/common/reducers/customer';
-import * as ActionTypes from '../../../../src/common/actions/customer';
+import { customer } from '../../../../../src/common/reducers/customer';
+import * as ActionTypes from '../../../../../src/common/actions/customer';
 
 describe('customer reducers', () => {
 

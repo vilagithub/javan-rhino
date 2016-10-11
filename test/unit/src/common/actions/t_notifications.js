@@ -6,8 +6,8 @@ import sinon from 'sinon';
 import {
   showNotification,
   dismissNotification
-} from '../../../../src/common/actions/notifications';
-import * as ActionTypes from '../../../../src/common/actions/notifications';
+} from '../../../../../src/common/actions/notifications';
+import * as ActionTypes from '../../../../../src/common/actions/notifications';
 
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);

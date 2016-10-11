@@ -3,7 +3,7 @@ import { spy, stub } from 'sinon';
 import {
   logout,
   errorHandler
-} from '../../../../server/common/handlers/login.js';
+} from '../../../../../src/server/handlers/login.js';
 
 describe('login', () => {
   let req, res, next;

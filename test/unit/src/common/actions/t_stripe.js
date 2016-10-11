@@ -8,7 +8,7 @@ import proxyquire from 'proxyquire';
 let postStripeTokenStub = stub();
 
 const stripe = proxyquire(
-  '../../../../src/common/actions/stripe',
+  '../../../../../src/common/actions/stripe',
   {
     './customer': {
       postStripeToken: (token) => postStripeTokenStub(token)

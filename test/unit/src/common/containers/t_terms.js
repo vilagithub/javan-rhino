@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
 
-import Terms from '../../../../src/common/containers/terms.js';
+import Terms from '../../../../../src/common/containers/terms.js';
 
 describe('<Terms /> container', () => {
 

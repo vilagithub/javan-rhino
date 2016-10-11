@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import { validateNonEmpty, validateCardNumber, validateExpiry, validateCVC } from '../../../../src/validation';
+import { validateNonEmpty, validateCardNumber, validateExpiry, validateCVC } from '../../../../../src/common/validation';
 
 describe('validation', () => {
 

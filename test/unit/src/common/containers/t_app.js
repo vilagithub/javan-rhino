@@ -3,8 +3,8 @@ import expect from 'expect';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import { App } from '../../../../src/common/containers/app.js';
-import Header from '../../../../src/common/components/header';
+import { App } from '../../../../../src/common/containers/app.js';
+import Header from '../../../../../src/common/components/header';
 const mockStore = configureStore();
 
 describe('<App /> container', () => {

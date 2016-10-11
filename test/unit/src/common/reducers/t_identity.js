@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import { identity } from '../../../../src/common/reducers/identity';
+import { identity } from '../../../../../src/common/reducers/identity';
 
 describe('identity reducers', () => {
   it('should default to default state', () => {

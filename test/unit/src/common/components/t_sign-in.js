@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
 
-import SignIn from '../../../../src/common/components/sign-in';
+import SignIn from '../../../../../src/common/components/sign-in';
 
 describe('<SignIn /> component', () => {
   let wrapper;

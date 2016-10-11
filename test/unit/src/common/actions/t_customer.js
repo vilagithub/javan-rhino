@@ -3,14 +3,14 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 
-import conf from '../../../../src/common/config';
+import conf from '../../../../../src/common/config';
 import {
   postStripeToken,
   sendStripeToken,
   sendStripeTokenSuccess,
   sendStripeTokenFailure
-} from '../../../../src/common/actions/customer';
-import * as ActionTypes from '../../../../src/common/actions/customer';
+} from '../../../../../src/common/actions/customer';
+import * as ActionTypes from '../../../../../src/common/actions/customer';
 
 const MU_URL = conf.get('UNIVERSAL:MU_URL');
 

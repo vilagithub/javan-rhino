@@ -3,8 +3,8 @@ import expect from 'expect';
 import { shallow } from 'enzyme';
 import { stub } from 'sinon';
 
-import { PaymentsForm } from '../../../../src/common/components/payments-form';
-import { Form } from '../../../../src/common/components/forms';
+import { PaymentsForm } from '../../../../../src/common/components/payments-form';
+import { Form } from '../../../../../src/common/components/forms';
 
 describe('<PaymentsForm /> component', () => {
   let wrapper;

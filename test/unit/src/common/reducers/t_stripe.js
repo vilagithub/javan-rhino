@@ -1,7 +1,7 @@
 import expect from 'expect';
 
-import { stripe } from '../../../../src/common/reducers/stripe';
-import * as ActionTypes from '../../../../src/common/actions/stripe';
+import { stripe } from '../../../../../src/common/reducers/stripe';
+import * as ActionTypes from '../../../../../src/common/actions/stripe';
 
 describe('stripe reducers', () => {
 

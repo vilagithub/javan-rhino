@@ -2,12 +2,12 @@ import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
 
-import { AddCard } from '../../../../src/common/containers/add-card';
-import Welcome from '../../../../src/common/components/welcome';
-import SignInBanner from '../../../../src/common/components/sign-in-banner';
-import PaymentsForm from '../../../../src/common/components/payments-form';
-import PaymentDetails from '../../../../src/common/components/payment-details';
-import CustomerSuccess from '../../../../src/common/components/customer-success';
+import { AddCard } from '../../../../../src/common/containers/add-card';
+import Welcome from '../../../../../src/common/components/welcome';
+import SignInBanner from '../../../../../src/common/components/sign-in-banner';
+import PaymentsForm from '../../../../../src/common/components/payments-form';
+import PaymentDetails from '../../../../../src/common/components/payment-details';
+import CustomerSuccess from '../../../../../src/common/components/customer-success';
 
 describe('<AddCard /> container', () => {
   let wrapper;
