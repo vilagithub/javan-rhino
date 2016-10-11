@@ -10,7 +10,7 @@ import util from 'util';
 import { match, RouterContext } from 'react-router';
 import { renderToString } from 'react-dom/server';
 
-import Html from '../common/helpers/html';
+import Html from '../server/helpers/html';
 import api from './routes/api';
 import conf from './configure.js';
 import configureStore from '../common/store/configureStore';

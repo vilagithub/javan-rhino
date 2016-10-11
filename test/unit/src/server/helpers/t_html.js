@@ -4,7 +4,7 @@ import { render, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 const mockStore = configureStore();
 
-import Html from '../../../../src/common/helpers/html.js';
+import Html from '../../../../src/server/helpers/html.js';
 
 describe('<Html /> helper', () => {
   let store;
