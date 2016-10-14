@@ -27,3 +27,14 @@
   width: 20px;
   height: 20px;
 }
+
+.errorMsg {
+  font-size: 14px;
+  margin: 20px 0;
+  color: $error;
+  display: none;
+}
+
+.errorMsg.error {
+  display: block;
+}

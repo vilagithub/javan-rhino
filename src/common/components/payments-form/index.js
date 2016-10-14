@@ -35,46 +35,82 @@ export class PaymentsForm extends Component {
     };
   }
 
-  getFieldsNames() {
-    return [
-      'cardNumber',
-      'expiryDate',
-      'securityNumber',
-
-      'billingFullname',
-      'billingAddress1',
-      'billingAddress2',
-      'billingState',
-      'billingCity',
-      'billingCountry', // value is ISO code from select, TODO: do we need to store name?
-      'billingPostcode',
-      //'billingCountryCode', TODO: do we need separate code field?
-      'billingPhone'
-    ];
-  }
-
   getInitialValues() {
     const initialState = {
       value: '',
       valid: false,
-      touched: false,
-      required: true
+      touched: false
     };
 
-    const names = this.getFieldsNames();
+    return {
+      cardNumber: {
+        name: 'cardNumber',
+        label: 'Card number',
+        required: true,
+        ...initialState
+      },
+      expiryDate: {
+        name: 'expiryDate',
+        label: 'Expiry date',
+        required: true,
+        ...initialState
+      },
+      securityNumber: {
+        name: 'securityNumber',
+        label: 'Security number',
+        required: true,
+        ...initialState
+      },
+      billingFullname: {
+        name: 'billingFullname',
+        label: 'Full name',
+        required: true,
+        ...initialState
+      },
+      billingAddress1: {
+        name: 'billingAddress1',
+        label: 'Address line 1',
+        required: true,
+        ...initialState
+      },
+      billingAddress2: {
+        name: 'billingAddress2',
+        label: 'Address line 2',
+        required: false,
+        ...initialState
+      },
+      billingState: {
+        name: 'billingState',
+        label: 'State/County',
+        required: true,
+        ...initialState
+      },
+      billingCity: {
+        name: 'billingCity',
+        label: 'Town/City',
+        required: true,
+        ...initialState
 
-    const optional = [
-      'billingAddress2',
-      'billingPhone'
-    ];
-
-    const fields = {};
-    // initialise all fields with default values and state
-    names.forEach(name => fields[name] = { ...initialState, name });
-    // mark optional field as not required
-    optional.forEach(name => fields[name].required = false);
-
-    return fields;
+      },
+      billingCountry: {
+        name: 'billingCountry',
+        label: 'Country',
+        required: true,
+        ...initialState
+      },
+      billingPostcode: {
+        name: 'billingPostcode',
+        label: 'Phone number',
+        required: true,
+        ...initialState
+      },
+      billingPhone: {
+        name: 'billingPhone',
+        label: 'Phone number',
+        required: false,
+        ...initialState
+      }
+    };
   }
 
   /* RENDER */
@@ -82,6 +118,7 @@ export class PaymentsForm extends Component {
   render() {
     const isFetching = this.props.customer.isFetching || this.props.stripe.isFetching;
     const isFormReady = this.state.isTosAccepted && !isFetching;
+    const errorMsg = this.getFirstErrorMessage(this.state.fields);
 
     const { identity } = this.props;
 
@@ -207,6 +244,11 @@ export class PaymentsForm extends Component {
                 </div>
               }
             </div>
+            { errorMsg &&
+              <div className={ `${styles.errorMsg} ${styles['error']}` }>
+                { errorMsg }
+              </div>
+            }
           </Fieldset>
         </Form>
       </div>
@@ -236,22 +278,22 @@ export class PaymentsForm extends Component {
       // field is required but empty
       if (field.required) {
         field.valid = validateNonEmpty(field.value);
-        field.errorMsg = 'This field is required';
+        field.errorMsg = field.label + ' field is required';
       }
 
       if (name === 'cardNumber') {
         field.valid = validateCardNumber(field.value);
-        field.errorMsg = 'This is not a valid card number';
+        field.errorMsg = 'Invalid card number';
       }
 
       if (name === 'expiryDate') {
         field.valid = validateExpiry(field.value);
-        field.errorMsg = 'This is not a valid expiry date';
+        field.errorMsg = 'Invalid expiry date';
       }
 
       if (name === 'securityNumber') {
         field.valid = validateCVC(field.value);
-        field.errorMsg = 'This is not a valid CVC security number';
+        field.errorMsg = 'Invalid security number';
       }
 
       if (forceTouched) {
@@ -260,6 +302,20 @@ export class PaymentsForm extends Component {
     });
 
     return fields;
+  }
+
+  getFirstErrorMessage(fields) {
+    let errorMsg;
+
+    Object.keys(fields).forEach((name) => {
+      let field = fields[name];
+
+      if (field.valid === false && field.touched && !errorMsg) {
+        errorMsg = field.errorMsg;
+      }
+    });
+
+    return errorMsg;
   }
 
   /* EVENT HANDLERS */
