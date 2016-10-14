@@ -283,17 +283,17 @@ export class PaymentsForm extends Component {
 
       if (name === 'cardNumber') {
         field.valid = validateCardNumber(field.value);
-        field.errorMsg = 'Card number is not a valid card number';
+        field.errorMsg = 'Invalid card number';
       }
 
       if (name === 'expiryDate') {
         field.valid = validateExpiry(field.value);
-        field.errorMsg = 'Expiry date is not a valid expiry date';
+        field.errorMsg = 'Invalid expiry date';
       }
 
       if (name === 'securityNumber') {
         field.valid = validateCVC(field.value);
-        field.errorMsg = 'CVC security number is not a valid CVC security number';
+        field.errorMsg = 'Invalid security number';
       }
 
       if (forceTouched) {
