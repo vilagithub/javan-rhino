@@ -18,6 +18,9 @@ $color: $mid-grey;
 
 .selectInput {
   composes: textInput from "./inputField.css";
+  position: relative;
+  background: transparent;
+  z-index: 1;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
