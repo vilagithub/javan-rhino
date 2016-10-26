@@ -27,7 +27,7 @@ const accessLogStream = fs.createWriteStream(
 const app = Express();
 
 app.use(helmet());
-app.use(morgan('combined', { stream: accessLogStream }));
+app.use(morgan('combined', { stream: process.stderr }));
 
 app.use(session(sessionConfig(conf)));
 
