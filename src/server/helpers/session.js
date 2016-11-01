@@ -19,11 +19,15 @@ export default function sessionStorageConfig(config) {
   }
 
   if(config.get('SESSION_SECRET')) {
-    // TODO: Log using configured session secret
+    console.info('Starting with configured session secret');
     settings.secret = config.get('SESSION_SECRET');
   } else {
-    // TODO: Error: using development site session secret
-    throw new Error('Refusing to start without SESSION_SECRET environment variable');
+    if(process.env.NODE_ENV === 'production') {
+      throw new Error('Refusing to start without SESSION_SECRET environment variable');
+    }
+
+    console.info('Starting with development default session secret');
+    settings.secret = 'dont-use-me-in-production';
   }
 
   if(config.get('SESSION_MEMCACHED_HOST') && config.get('SESSION_MEMCACHED_SECRET')) {
