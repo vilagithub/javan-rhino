@@ -1,5 +1,6 @@
 const spawn = require('child_process').spawn;
 const basePath = require('path').resolve(__dirname, '..');
+const util = require('util');
 
 const webpackServer = spawn('node', [].concat(
   basePath + '/webpack/webpack-dev-server.js',
@@ -19,7 +20,7 @@ expressServer.stderr.on('data', log);
 expressServer.on('close', shutdown);
 
 function log(data) {
-  console.log(`${data}`);
+  util.log(`${data}`);
 }
 
 function shutdown() {
