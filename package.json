@@ -5,8 +5,8 @@
   "description": "Front-end to Ubuntu Store Payments",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development concurrently --kill-others \"node webpack/webpack-dev-server.js\" \"node src/server/\"",
-    "start-prod": "NODE_ENV=production node dist/server/",
+    "start": "node ./scripts/start-dev.js",
+    "start-build": "node dist/server/",
     "build": "./scripts/build.sh",
     "lint": "eslint -c .eslintrc.js '**/*.js'",
     "test": "nyc npm run test:run && npm run lint",
@@ -14,7 +14,8 @@
     "test:unit": "BABEL_DISABLE_CACHE=1 NODE_ENV=TEST mocha --recursive --require babel-core/register --compilers js:babel-register ./test/unit/setup.js ./test/unit/**/*",
     "test:routes": "SESSION_SECRET=test BABEL_DISABLE_CACHE=1 NODE_ENV=TEST mocha --require babel-core/register --compilers js:babel-register ./test/routes/setup.js ./test/routes/**/*",
     "test:watch": "npm run test:unit -- --watch",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "make-env": "./scripts/make-env.js"
   },
   "repository": {
     "type": "git",
@@ -44,7 +45,6 @@
     "babel-register": "^6.16.3",
     "body-parser": "^1.15.2",
     "classnames": "^2.2.5",
-    "concurrently": "^3.1.0",
     "connect-memcached": "^0.2.0",
     "coveralls": "^2.11.14",
     "css-loader": "^0.25.0",
@@ -52,6 +52,7 @@
     "enzyme": "^2.5.1",
     "eslint": "^3.8.1",
     "eslint-plugin-react": "^6.4.1",
+    "dotenv": "^2.0.0",
     "expect": "^1.20.2",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
@@ -71,6 +72,7 @@
     "openid": "^2.0.6",
     "postcss-loader": "^1.0.0",
     "postcss-simple-vars": "^3.0.0",
+    "prompt": "^1.0.0",
     "proxyquire": "^1.7.10",
     "qs": "^6.3.0",
     "react": "^15.3.2",
