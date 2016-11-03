@@ -24,8 +24,8 @@ app.use(webpackDevMiddleware(compiler, {
     children: false
   },
   headers: { 'Access-Control-Allow-Origin': '*' },
-  publicPath: webpackConfig.output.publicPath })
-);
+  publicPath: webpackConfig.output.publicPath
+}));
 
 app.use(webpackHotMiddleware(compiler));
 
