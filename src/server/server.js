@@ -28,6 +28,7 @@ if (app.get('env') === 'production') {
 
 app.use(Express.static(__dirname + '/../public'));
 
+app.use('/_status', routes.servicestatus);
 app.use('/', routes.login);
 app.use('/api', routes.api);
 app.use('/', routes.universal);
