@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import path from 'path';
 import session from 'express-session';
 
+import setRevisionHeader from './middleware/set-revision-header.js';
 import * as routes from './routes/';
 import conf from './configure';
 import sessionConfig from './helpers/session';
@@ -19,14 +20,13 @@ const app = Express();
 
 app.use(helmet());
 app.use(morgan('combined', { stream: accessLogStream }));
-
 app.use(session(sessionConfig(conf)));
+app.use(Express.static(__dirname + '/../public'));
+app.use(setRevisionHeader);
 
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1);
 }
-
-app.use(Express.static(__dirname + '/../public'));
 
 app.use('/', routes.login);
 app.use('/api', routes.api);

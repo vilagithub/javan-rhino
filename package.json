@@ -86,6 +86,7 @@
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
     "request": "^2.75.0",
+    "rewire": "^2.5.2",
     "sinon": "^1.17.6",
     "style-loader": "^0.13.1",
     "supertest": "^2.0.0",
