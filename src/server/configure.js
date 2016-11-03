@@ -3,6 +3,12 @@ const development = require('../../settings/development');
 const staging = require('../../settings/staging');
 const production = require('../../settings/production');
 
+nconf.argv();
+
+if (nconf.get('env')) {
+  require('dotenv').config({ path: nconf.get('ENV') });
+}
+
 nconf.env({
   separator: '__',
   whitelist: [

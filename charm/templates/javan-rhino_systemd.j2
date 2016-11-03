@@ -14,7 +14,7 @@ Environment='SERVER__PORT=8000'
 WorkingDirectory={{ working_dir }}
 User={{ user }}
 Environment='DEPLOY_ENV={{ environment }}'
-ExecStart=/usr/bin/npm run start-prod
+ExecStart=/usr/bin/npm run start-build
 Restart=on-failure
 RestartSec=15 5
 
