@@ -1,13 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const vars = require('postcss-simple-vars');
 const autoprefixer = require('autoprefixer');
-
-const webpackIsomorphicToolsPlugin =
-  new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools-configuration'))
-  .development();
 
 const sharedVars = require('../src/common/style/variables');
 
@@ -30,7 +25,6 @@ module.exports = {
         warnings: false
       }
     }),
-    webpackIsomorphicToolsPlugin,
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
@@ -42,5 +36,10 @@ module.exports = {
   },
   postcss: function () {
     return [ vars({ variables: () => sharedVars }), autoprefixer ];
+  },
+  stats: {
+    colors: true,
+    chunks: false,
+    children: false
   }
 };
