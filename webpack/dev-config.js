@@ -1,18 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
-const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const vars = require('postcss-simple-vars');
 const autoprefixer = require('autoprefixer');
 
-const conf = require('../server/configure.js');
+const conf = require('../src/server/configure.js');
 const WEBPACK_DEV_URL = conf.get('SERVER:WEBPACK_DEV_URL');
 
-const webpackIsomorphicToolsPlugin =
-  new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools-configuration'))
-  .development();
-
-const sharedVars = require('../src/style/variables');
+const sharedVars = require('../src/common/style/variables');
 
 module.exports = {
   context: path.resolve(__dirname, '..'),
@@ -20,7 +15,7 @@ module.exports = {
     'babel-polyfill',
     `webpack-hot-middleware/client?path=${WEBPACK_DEV_URL}/__webpack_hmr`,
     'webpack/hot/only-dev-server',
-    './src',
+    './src/common',
   ],
   output: {
     path: path.join(__dirname, '../public/static'),
@@ -31,8 +26,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('style.css', { allChunks: true }),
-    webpackIsomorphicToolsPlugin
+    new ExtractTextPlugin('style.css', { allChunks: true })
   ],
   module: {
     loaders: require('./loaders-config.js')
@@ -40,5 +34,6 @@ module.exports = {
   devtool: 'source-map',
   postcss: function () {
     return [ vars({ variables: () => sharedVars }), autoprefixer ];
-  }
+  },
+  debug: true
 };

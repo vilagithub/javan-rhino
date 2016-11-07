@@ -1,5 +1,6 @@
+from glob import glob
 from re import search
-from os.path import dirname, exists, join
+from os.path import dirname, join
 from subprocess import check_call, check_output
 
 from charmhelpers.core import hookenv
@@ -35,6 +36,7 @@ def configure(cache):
             })
         check_port('ols.{}.express'.format(service_name()), port())
         set_state('service.configured')
+        hookenv.status_set('active', 'systemd unit configured')
     else:
         hookenv.status_set('blocked',
                            'Service requires session_secret and '
@@ -43,8 +45,10 @@ def configure(cache):
 
 @when_not('apt.queued_installs')
 def install_custom_nodejs():
-    deb_path = join(dirname(dirname(__file__)), 'files', 'nodejs.deb')
-    if exists(deb_path):
+    deb_path = join(dirname(dirname(__file__)), 'files', 'nodejs*.deb')
+    paths = glob(deb_path)
+    if paths:
+        deb_path = paths[0]
         deb_pkg_version_output = check_output(['dpkg-deb', '-I', deb_path])
         deb_pkg_version = search('Version: (.*)',
                                  deb_pkg_version_output.decode('ascii'))
