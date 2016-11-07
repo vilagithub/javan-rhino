@@ -1,6 +1,7 @@
 import session from 'express-session';
 import ConnectMemcached from 'connect-memcached';
-const util = require('util');
+
+import logger from '../logger';
 
 const MemcachedStore = ConnectMemcached(session);
 const SESSION_DEFAULTS = {
@@ -20,14 +21,14 @@ export default function sessionStorageConfig(config) {
   }
 
   if(config.get('SESSION_SECRET')) {
-    util.log('Starting with configured session secret');
+    logger.log('info', 'Starting with configured session secret');
     settings.secret = config.get('SESSION_SECRET');
   } else {
     if(process.env.NODE_ENV === 'production') {
       throw new Error('Refusing to start without SESSION_SECRET environment variable');
     }
 
-    util.log('Starting with development default session secret');
+    logger.log('info', 'Starting with development default session secret');
     settings.secret = 'dont-use-me-in-production';
   }
 

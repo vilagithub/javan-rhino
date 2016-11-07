@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/server';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 
-import conf from '../../server/configure';
+import conf from '../configure';
 
 const assetHost = (process.env.NODE_ENV === 'production') ? ''
   : conf.get('SERVER:WEBPACK_DEV_URL');

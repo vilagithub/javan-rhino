@@ -5,7 +5,7 @@
   "description": "Front-end to Ubuntu Store Payments",
   "main": "index.js",
   "scripts": {
-    "start": "node ./scripts/start-dev.js",
+    "start": "node ./webpack/webpack-dev-server.js",
     "start-build": "node dist/server/",
     "build": "./scripts/build.sh",
     "lint": "eslint -c .eslintrc.js '**/*.js'",
@@ -49,10 +49,10 @@
     "coveralls": "^2.11.14",
     "css-loader": "^0.25.0",
     "css-modules-require-hook": "^4.0.5",
+    "dotenv": "^2.0.0",
     "enzyme": "^2.5.1",
     "eslint": "^3.8.1",
     "eslint-plugin-react": "^6.4.1",
-    "dotenv": "^2.0.0",
     "expect": "^1.20.2",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
@@ -94,6 +94,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.0"
+    "webpack-hot-middleware": "^2.13.0",
+    "winston": "^2.3.0"
   }
 }
