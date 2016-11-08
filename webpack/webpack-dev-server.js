@@ -5,10 +5,11 @@ const url = require('url');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware  = require('webpack-hot-middleware');
 
-const logger = require('../src/server/logger.js').default;
+const winston = require('../src/server/logger.js').default;
 const webpackConfig = require('./dev-config');
 const conf = require('../src/server/configure');
 
+const logger = winston.loggers.get('app');
 const webpackDevUrl = url.parse(conf.get('SERVER:WEBPACK_DEV_URL'));
 
 const webpackApp = Express();

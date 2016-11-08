@@ -1,7 +1,8 @@
 import session from 'express-session';
 import ConnectMemcached from 'connect-memcached';
 
-import logger from '../logger';
+import winston from '../logger';
+const logger = winston.loggers.get('app');
 
 const MemcachedStore = ConnectMemcached(session);
 const SESSION_DEFAULTS = {

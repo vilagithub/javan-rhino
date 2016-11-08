@@ -1,9 +1,8 @@
 import expect from 'expect';
 import sinon from 'sinon';
 import stdMocks from 'std-mocks';
-import winston from 'winston';
 
-import { serialize } from '../../../../src/server/logger';
+import winston, { serialize } from '../../../../src/server/logger';
 
 /*eslint no-console: 'off' */
 describe('logger', () => {

@@ -102,3 +102,5 @@ ${(options.meta && Object.keys(options.meta).length ? serialize(options.meta) : 
     stderrLevels: ['info']
   }
 });
+
+export default winston;
