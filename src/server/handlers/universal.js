@@ -7,6 +7,8 @@ import conf from '../configure.js';
 import configureStore from '../../common/store/configureStore';
 import routes from '../../common/routes';
 
+import assets from '../../../webpack-assets.json';
+
 export const universal = (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     handleMatch(req, res, error, redirectLocation, renderProps);
@@ -62,6 +64,7 @@ export const handleMatch = (req, res, error, redirectLocation, renderProps) => {
           store={ store }
           component={ component }
           config={ config }
+          assets={ assets }
         />
       ));
   } else {
