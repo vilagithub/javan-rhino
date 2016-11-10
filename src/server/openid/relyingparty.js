@@ -58,6 +58,7 @@ const RelyingPartyFactory = (session) => {
       new openid.Macaroons(session.cid)
     );
   }
+
   return new openid.RelyingParty(
     OPENID_VERIFY_URL,
     MU_URL,
